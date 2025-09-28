@@ -65,12 +65,7 @@ public class User {
     }
 
     public void removeFromCart(Book book) {
-        for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
-                cart.getItems().remove(item);
-                break;
-            }
-        }
+        cart.removeBook(book);
     }
 
     public void viewOrders() {
