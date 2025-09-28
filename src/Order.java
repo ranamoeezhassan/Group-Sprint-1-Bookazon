@@ -77,11 +77,11 @@ public class Order {
             totalPrice += item.getTotalPrice();
         }
 
-        if (subscription == "gold") {
+        if (subscription.equals("gold")) {
             totalPrice *= 0.15; // 15% discount for prime members
-        } else if (subscription == "platinum") {
+        } else if (subscription.equals("platinum")) {
             totalPrice *= 0.10; // 10% discount for platinum members
-        } else if (subscription == "silver") {
+        } else if (subscription.equals("silver")) {
             totalPrice *= 0.05; // 5% discount for silver members
         } 
 
