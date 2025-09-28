@@ -78,11 +78,11 @@ public class Order {
         }
 
         if (subscription == "gold") {
-            totalPrice *= 0.15; // 15% discount for prime members
+            totalPrice *= 0.85; // 15% discount for gold members (1 - 0.15 = 0.85)
         } else if (subscription == "platinum") {
-            totalPrice *= 0.10; // 10% discount for platinum members
+            totalPrice *= 0.90; // 10% discount for platinum members (1 - 0.10 = 0.90)
         } else if (subscription == "silver") {
-            totalPrice *= 0.05; // 5% discount for silver members
+            totalPrice *= 0.95; // 5% discount for silver members (1 - 0.05 = 0.95)
         } 
 
         return totalPrice;
