@@ -51,6 +51,22 @@ public class Bookazon {
         user.setSubscription(subscription);
     }
 
+    public Book getBook(int index) {
+        return books.get(index);
+    }
+
+    public User getUser(int index) {
+        return users.get(index);
+    }
+
+    public int getBooksCount() {
+        return books.size();
+    }
+
+    public int getUsersCount() {
+        return users.size();
+    }
+
     
     public static void main(String[] args) {
         
@@ -66,21 +82,21 @@ public class Bookazon {
         bookazon.addUser(new User("Bob", "gold"));
 
         // add books to cart
-        bookazon.users.get(0).addToCart(bookazon.books.get(0), 1);
-        bookazon.users.get(0).addToCart(bookazon.books.get(1), 2);
+        bookazon.getUser(0).addToCart(bookazon.getBook(0), 1);
+        bookazon.getUser(0).addToCart(bookazon.getBook(1), 2);
 
         // view cart
-        bookazon.users.get(0).viewCart();
+        bookazon.getUser(0).viewCart();
 
         // set shipping address and billing address
-        bookazon.users.get(0).setShippingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA");
-        bookazon.users.get(0).setBillingAddress("456 Elm St", "", "Springfield", "IL", "62702", "USA");
+        bookazon.getUser(0).setShippingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA");
+        bookazon.getUser(0).setBillingAddress("456 Elm St", "", "Springfield", "IL", "62702", "USA");
 
         // checkout
-        bookazon.users.get(0).checkout();
+        bookazon.getUser(0).checkout();
 
         // view order details
-        bookazon.users.get(0).viewOrders();
+        bookazon.getUser(0).viewOrders();
         
     }
 }
