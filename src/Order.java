@@ -5,18 +5,8 @@ public class Order {
     private String dateShipped;
     private String userName;
     private String orderStatus;
-    private String shippingAddressLine1;
-    private String shippingAddressLine2;
-    private String shippingAddressCity;
-    private String shippingAddressState;
-    private String shippingAddressZip;
-    private String shippingAddressCountry;
-    private String billingAddressLine1;
-    private String billingAddressLine2;
-    private String billingAddressCity;
-    private String billingAddressState;
-    private String billingAddressZip;
-    private String billingAddressCountry;
+    private Address shippingAddress;
+    private Address billingAddress;
     private ArrayList<CartItem> items;
     private double orderPrice;
 
@@ -25,22 +15,20 @@ public class Order {
         this.orderPrice = calculatePrice(subscription);
     }
 
-    public void setShippingAddress(String line1, String line2, String city, String state, String zip, String country) {
-        this.shippingAddressLine1 = line1;
-        this.shippingAddressLine2 = line2;
-        this.shippingAddressCity = city;
-        this.shippingAddressState = state;
-        this.shippingAddressZip = zip;
-        this.shippingAddressCountry = country;
+    public void setShippingAddress(Address address) {
+        this.shippingAddress = address;
     }
 
-    public void setBillingAddress(String line1, String line2, String city, String state, String zip, String country) {
-        this.billingAddressLine1 = line1;
-        this.billingAddressLine2 = line2;
-        this.billingAddressCity = city;
-        this.billingAddressState = state;
-        this.billingAddressZip = zip;
-        this.billingAddressCountry = country;
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setBillingAddress(Address address) {
+        this.billingAddress = address;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
     }
 
     public void setOrderStatus(String status) {
@@ -65,8 +53,16 @@ public class Order {
         System.out.println("Date Shipped: " + dateShipped);
         System.out.println("User Name: " + userName);
         System.out.println("Order Status: " + orderStatus);
-        System.out.println("Shipping Address: " + shippingAddressLine1 + ", " + shippingAddressLine2 + ", " + shippingAddressCity + ", " + shippingAddressState + ", " + shippingAddressZip + ", " + shippingAddressCountry);
-        System.out.println("Billing Address: " + billingAddressLine1 + ", " + billingAddressLine2 + ", " + billingAddressCity + ", " + billingAddressState + ", " + billingAddressZip + ", " + billingAddressCountry);
+        if (shippingAddress != null) {
+            System.out.println("Shipping Address: " + shippingAddress.getLine1() + ", " + shippingAddress.getLine2() + ", " + shippingAddress.getCity() + ", " + shippingAddress.getState() + ", " + shippingAddress.getZip() + ", " + shippingAddress.getCountry());
+        } else {
+            System.out.println("Shipping Address: N/A");
+        }
+        if (billingAddress != null) {
+            System.out.println("Billing Address: " + billingAddress.getLine1() + ", " + billingAddress.getLine2() + ", " + billingAddress.getCity() + ", " + billingAddress.getState() + ", " + billingAddress.getZip() + ", " + billingAddress.getCountry());
+        } else {
+            System.out.println("Billing Address: N/A");
+        }
         System.out.println("Order Price: $" + orderPrice);
     }
 
@@ -77,13 +73,13 @@ public class Order {
             totalPrice += item.getTotalPrice();
         }
 
-        if (subscription == "gold") {
+        if ("gold".equals(subscription)) {
             totalPrice *= 0.15; // 15% discount for prime members
-        } else if (subscription == "platinum") {
+        } else if ("platinum".equals(subscription)) {
             totalPrice *= 0.10; // 10% discount for platinum members
-        } else if (subscription == "silver") {
+        } else if ("silver".equals(subscription)) {
             totalPrice *= 0.05; // 5% discount for silver members
-        } 
+        }
 
         return totalPrice;
     }
