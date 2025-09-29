@@ -34,8 +34,8 @@ public class User {
         return subscription;
     }
 
-    public void setSubscription(String role) {
-        this.subscription = role;
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 
     public void viewCart() {

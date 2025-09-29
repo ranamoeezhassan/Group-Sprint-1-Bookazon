@@ -27,7 +27,7 @@ public class Bookazon {
 
     public void viewUsers() {
         for (User user : users) {
-            System.out.println(user.getName() + " - Role: " + user.getSubscription());
+            System.out.println(user.getName() + " - Subscription: " + user.getSubscription());
         }
     }
 
@@ -47,8 +47,8 @@ public class Bookazon {
         book.setPaperback(isPaperback);
     }
 
-    public void updateRole(User user, String role) {
-        user.setSubscription(role);
+    public void updateSubscription(User user, String subscription) {
+        user.setSubscription(subscription);
     }
 
     
