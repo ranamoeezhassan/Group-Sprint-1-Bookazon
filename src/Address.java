@@ -2,11 +2,11 @@ public abstract class Address {
     protected String line1;
     protected String line2;
     protected String city;
-    protected String state;
+    protected State state;
     protected String zip;
     protected String country;
 
-    public Address(String line1, String line2, String city, String state, String zip, String country) {
+    public Address(String line1, String line2, String city, State state, String zip, String country) {
         this.line1 = line1;
         this.line2 = line2;
         this.city = city;
@@ -39,11 +39,11 @@ public abstract class Address {
         this.city = city;
     }
 
-    public String getState(){
+    public State getState(){
         return state;
     }
 
-    public void setState(String state){
+    public void setState(State state){
         this.state = state;
     }
 

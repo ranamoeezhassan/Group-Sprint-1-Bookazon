@@ -17,8 +17,8 @@ public class User {
         this.subscription = subscription;  // normal, gold, platinum, silver membership
         this.cart = new Cart();
         this.orders = new ArrayList<>();
-        this.shippingAddress = new ShippingAddress("", "", "", "", "", "");
-        this.billingAddress = new BillingAddress("", "", "", "", "", "");
+        this.shippingAddress = new ShippingAddress("", "", "", State.Alabama, "", "");
+        this.billingAddress = new BillingAddress("", "", "", State.Arizona, "", "");
     }
 
     public String getName() {
@@ -37,7 +37,7 @@ public class User {
         cart.viewCartDetails();
     }
 
-    public void setShippingAddress(String line1, String line2, String city, String state, String zip, String country){
+    public void setShippingAddress(String line1, String line2, String city, State state, String zip, String country){
         shippingAddress.setLine1(line1);
         shippingAddress.setLine2(line2);
         shippingAddress.setCity(city);
@@ -46,7 +46,7 @@ public class User {
         shippingAddress.setCountry(country);
     }
 
-    public void setBillingAddress(String line1, String line2, String city, String state, String zip, String country){
+    public void setBillingAddress(String line1, String line2, String city, State state, String zip, String country){
         billingAddress.setLine1(line1);
         billingAddress.setLine2(line2);
         billingAddress.setCity(city);
