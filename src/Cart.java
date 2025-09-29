@@ -21,7 +21,12 @@ public class Cart {
     }
 
     public void removeBook(Book book) {
-        items.removeIf(item -> item.getName().equals(book.getTitle()));
+        for (CartItem item : items) {
+            if (item.getName().equals(book.getTitle())) {
+                items.remove(item);
+                break;
+            }
+        }
     }
     
     public void updateQuantity(CartItem item, int quantity) {

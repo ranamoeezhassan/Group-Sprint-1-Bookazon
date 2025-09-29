@@ -10,9 +10,11 @@ public class Order {
     private ArrayList<CartItem> items;
     private double orderPrice;
 
-    public Order(Cart cart, String subscription) {
+    public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
         this.items = cart.getItems();
         this.orderPrice = calculatePrice(subscription);
+        this.shippingAddress = shippingAddress;
+        this.billingAddress = billingAddress;
     }
 
     public void setShippingAddress(Address address) {
@@ -53,33 +55,18 @@ public class Order {
         System.out.println("Date Shipped: " + dateShipped);
         System.out.println("User Name: " + userName);
         System.out.println("Order Status: " + orderStatus);
-        if (shippingAddress != null) {
-            System.out.println("Shipping Address: " + shippingAddress.getLine1() + ", " + shippingAddress.getLine2() + ", " + shippingAddress.getCity() + ", " + shippingAddress.getState() + ", " + shippingAddress.getZip() + ", " + shippingAddress.getCountry());
-        } else {
-            System.out.println("Shipping Address: N/A");
-        }
-        if (billingAddress != null) {
-            System.out.println("Billing Address: " + billingAddress.getLine1() + ", " + billingAddress.getLine2() + ", " + billingAddress.getCity() + ", " + billingAddress.getState() + ", " + billingAddress.getZip() + ", " + billingAddress.getCountry());
-        } else {
-            System.out.println("Billing Address: N/A");
-        }
+        System.out.println("Shipping Address: " + shippingAddress.getFullAddress());
+        System.out.println("Billing Address: " + billingAddress.getFullAddress());
         System.out.println("Order Price: $" + orderPrice);
     }
 
-    public double calculatePrice(String subscription) {
+    public double calculatePrice(Subscription subscription) {
         double totalPrice = 0.0;
 
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
-
-        if ("gold".equals(subscription)) {
-            totalPrice *= 0.15; // 15% discount for prime members
-        } else if ("platinum".equals(subscription)) {
-            totalPrice *= 0.10; // 10% discount for platinum members
-        } else if ("silver".equals(subscription)) {
-            totalPrice *= 0.05; // 5% discount for silver members
-        }
+        totalPrice *= subscription.getDiscount();
 
         return totalPrice;
     }

@@ -2,30 +2,34 @@
 import java.util.ArrayList;
 
 public class User {
+    private static final String DEFAULT_ORDER_STATUS = "Order Placed";
+    
     private String name;
-    private String subscription;
+    private Subscription subscription;
     private Cart cart;
     private ArrayList<Order> orders;
     private Address shippingAddress;
     private Address billingAddress;
-
-    public User(String name, String subscription) {
+  
+    public User(String name, Subscription subscription) {
         this.name = name;
         this.subscription = subscription;  // normal, gold, platinum, silver membership
         this.cart = new Cart();
         this.orders = new ArrayList<>();
+        this.shippingAddress = new ShippingAddress("", "", "", "", "", "");
+        this.billingAddress = new BillingAddress("", "", "", "", "", "");
     }
 
     public String getName() {
         return name;
     }
 
-    public String getSubscription() {
+    public Subscription getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(String role) {
-        this.subscription = role;
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
 
     public void viewCart() {
@@ -48,6 +52,7 @@ public class User {
         return billingAddress;
     }
 
+
     public void addToCart(Book book, int quantity) {
         cart.addBook(book, quantity);
     }
@@ -63,14 +68,8 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription);
-        if (this.shippingAddress != null) {
-            order.setShippingAddress(this.shippingAddress);
-        }
-        if (this.billingAddress != null) {
-            order.setBillingAddress(this.billingAddress);
-        }
-        order.setOrderStatus("Order Placed");
+        Order order = new Order(this.cart, this.subscription, this.shippingAddress, this.billingAddress);
+        order.setOrderStatus(DEFAULT_ORDER_STATUS);
         order.setDateCreated(java.time.LocalDate.now().toString());
         order.setUserName(this.name);
         orders.add(order);

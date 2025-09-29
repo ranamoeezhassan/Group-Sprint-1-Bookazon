@@ -28,4 +28,8 @@ public class Address {
     public void setState(String state) { this.state = state; }
     public void setZip(String zip) { this.zip = zip; }
     public void setCountry(String country) { this.country = country; }
+
+    public String getFullAddress(){
+        return line1 + ", " + line2 + ", " + city + ", " + state + ", " + zip + ", " + country;
+    }
 }
