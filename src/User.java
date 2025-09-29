@@ -82,7 +82,7 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription);
+        Order order = new Order(this.cart, this.subscription);
         order.setShippingAddress(this.shippingAddressLine1, this.shippingAddressLine2, 
                                 this.shippingAddressCity, this.shippingAddressState, 
                                 this.shippingAddressZip, this.shippingAddressCountry);
