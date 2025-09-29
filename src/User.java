@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 
 public class User {
+    private static final String DEFAULT_ORDER_STATUS = "Order Placed";
+    
     private String name;
     private String subscription;
     private Cart cart;
@@ -27,8 +29,8 @@ public class User {
         return subscription;
     }
 
-    public void setSubscription(String role) {
-        this.subscription = role;
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 
     public void viewCart() {
@@ -59,12 +61,7 @@ public class User {
     }
 
     public void removeFromCart(Book book) {
-        for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
-                cart.getItems().remove(item);
-                break;
-            }
-        }
+        cart.removeBook(book);
     }
 
     public void viewOrders() {
@@ -77,6 +74,8 @@ public class User {
         Order order = new Order(cart, this.subscription, shippingAddress, billingAddress);
         order.setOrderStatus("Order Placed");
         order.setDateCreated("2024-01-01");
+        order.setOrderStatus(DEFAULT_ORDER_STATUS);
+        order.setDateCreated(java.time.LocalDate.now().toString());
         order.setUserName(this.name);
         orders.add(order);
     }
