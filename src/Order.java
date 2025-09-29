@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Order {
+    private final double GOLD_DISCOUNT = 0.85;
+    private final double PLATINUM_DISCOUNT = 0.90;
+    private final double SILVER_DISCOUNT = 0.95;
     private String dateCreated;
     private String dateShipped;
     private String userName;
@@ -76,13 +79,13 @@ public class Order {
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
-
+      
         if (subscription.equals("gold")) {
-            totalPrice *= 0.15; // 15% discount for prime members
+            totalPrice *= GOLD_DISCOUNT; // 15% discount for prime members
         } else if (subscription.equals("platinum")) {
-            totalPrice *= 0.10; // 10% discount for platinum members
+            totalPrice *= PLATINUM_DISCOUNT; // 10% discount for platinum members
         } else if (subscription.equals("silver")) {
-            totalPrice *= 0.05; // 5% discount for silver members
+            totalPrice *= SILVER_DISCOUNT; // 5% discount for silver members
         } 
 
         return totalPrice;

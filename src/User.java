@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 
 public class User {
+    private static final String DEFAULT_ORDER_STATUS = "Order Placed";
+    
     private String name;
     private String subscription;
     private Cart cart;
@@ -34,8 +36,8 @@ public class User {
         return subscription;
     }
 
-    public void setSubscription(String role) {
-        this.subscription = role;
+    public void setSubscription(String subscription) {
+        this.subscription = subscription;
     }
 
     public void viewCart() {
@@ -65,12 +67,7 @@ public class User {
     }
 
     public void removeFromCart(Book book) {
-        for (CartItem item : cart.getItems()) {
-            if (item.getName().equals(book.getTitle())) {
-                cart.getItems().remove(item);
-                break;
-            }
-        }
+        cart.removeBook(book);
     }
 
     public void viewOrders() {
@@ -80,11 +77,15 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription);
-        order.setShippingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA");
-        order.setBillingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA");
-        order.setOrderStatus("Order Placed");
-        order.setDateCreated("2024-01-01");
+        Order order = new Order(this.cart, this.subscription);
+        order.setShippingAddress(this.shippingAddressLine1, this.shippingAddressLine2, 
+                                this.shippingAddressCity, this.shippingAddressState, 
+                                this.shippingAddressZip, this.shippingAddressCountry);
+        order.setBillingAddress(this.billingAddressLine1, this.billingAddressLine2, 
+                               this.billingAddressCity, this.billingAddressState, 
+                               this.billingAddressZip, this.billingAddressCountry);
+        order.setOrderStatus(DEFAULT_ORDER_STATUS);
+        order.setDateCreated(java.time.LocalDate.now().toString());
         order.setUserName(this.name);
         orders.add(order);
     }
