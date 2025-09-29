@@ -8,17 +8,16 @@ public class User {
     private Subscription subscription;
     private Cart cart;
     private ArrayList<Order> orders;
-    private ShippingAddress shippingAddress;
-    private BillingAddress billingAddress;
-    
-
+    private Address shippingAddress;
+    private Address billingAddress;
+  
     public User(String name, Subscription subscription) {
         this.name = name;
         this.subscription = subscription;  // normal, gold, platinum, silver membership
         this.cart = new Cart();
         this.orders = new ArrayList<>();
-        this.shippingAddress = new ShippingAddress("", "", "", State.Alabama, "", "");
-        this.billingAddress = new BillingAddress("", "", "", State.Arizona, "", "");
+        this.shippingAddress = new ShippingAddress("", "", "", "", "", "");
+        this.billingAddress = new BillingAddress("", "", "", "", "", "");
     }
 
     public String getName() {
@@ -37,27 +36,25 @@ public class User {
         cart.viewCartDetails();
     }
 
-    public void setShippingAddress(String line1, String line2, String city, State state, String zip, String country){
-        shippingAddress.setLine1(line1);
-        shippingAddress.setLine2(line2);
-        shippingAddress.setCity(city);
-        shippingAddress.setState(state);
-        shippingAddress.setZip(zip);
-        shippingAddress.setCountry(country);
+    public void setShippingAddress(Address address) {
+        this.shippingAddress = address;
     }
 
-    public void setBillingAddress(String line1, String line2, String city, State state, String zip, String country){
-        billingAddress.setLine1(line1);
-        billingAddress.setLine2(line2);
-        billingAddress.setCity(city);
-        billingAddress.setState(state);
-        billingAddress.setZip(zip);
-        billingAddress.setCountry(country);
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setBillingAddress(Address address) {
+        this.billingAddress = address;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
     }
 
 
     public void addToCart(Book book, int quantity) {
-        cart.addItem(new CartItem(book.getTitle(), book.getPrice(), quantity));
+        cart.addBook(book, quantity);
     }
 
     public void removeFromCart(Book book) {
@@ -71,9 +68,7 @@ public class User {
     }
 
     public void checkout() {
-        Order order = new Order(cart, this.subscription, shippingAddress, billingAddress);
-        order.setOrderStatus("Order Placed");
-        order.setDateCreated("2024-01-01");
+        Order order = new Order(this.cart, this.subscription, this.shippingAddress, this.billingAddress);
         order.setOrderStatus(DEFAULT_ORDER_STATUS);
         order.setDateCreated(java.time.LocalDate.now().toString());
         order.setUserName(this.name);

@@ -5,18 +5,33 @@ public class Order {
     private String dateShipped;
     private String userName;
     private String orderStatus;
-    private ShippingAddress shippingAddress;
-    private BillingAddress billingAddress;
+    private Address shippingAddress;
+    private Address billingAddress;
     private ArrayList<CartItem> items;
     private double orderPrice;
 
-    public Order(Cart cart, Subscription subscription, ShippingAddress shippingAddress, BillingAddress billingAddress) {
+    public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
         this.items = cart.getItems();
         this.orderPrice = calculatePrice(subscription);
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
     }
 
+    public void setShippingAddress(Address address) {
+        this.shippingAddress = address;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setBillingAddress(Address address) {
+        this.billingAddress = address;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
 
     public void setOrderStatus(String status) {
         this.orderStatus = status;
@@ -51,7 +66,6 @@ public class Order {
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
-      
         totalPrice *= subscription.getDiscount();
 
         return totalPrice;

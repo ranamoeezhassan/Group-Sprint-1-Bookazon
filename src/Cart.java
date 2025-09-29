@@ -11,6 +11,11 @@ public class Cart {
         items.add(item);
     }
 
+    public void addBook(Book book, int quantity) {
+        CartItem item = new CartItem(book.getTitle(), book.getPrice(), quantity);
+        addItem(item);
+    }
+
     public void removeItem(CartItem item) {
         items.remove(item);
     }
