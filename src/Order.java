@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 
 public class Order {
-    private final double GOLD_DISCOUNT = 0.85;
-    private final double PLATINUM_DISCOUNT = 0.90;
-    private final double SILVER_DISCOUNT = 0.95;
     private String dateCreated;
     private String dateShipped;
     private String userName;
@@ -13,7 +10,7 @@ public class Order {
     private ArrayList<CartItem> items;
     private double orderPrice;
 
-    public Order(Cart cart, String subscription, ShippingAddress shippingAddress, BillingAddress billingAddress) {
+    public Order(Cart cart, Subscription subscription, ShippingAddress shippingAddress, BillingAddress billingAddress) {
         this.items = cart.getItems();
         this.orderPrice = calculatePrice(subscription);
         this.shippingAddress = shippingAddress;
@@ -48,20 +45,14 @@ public class Order {
         System.out.println("Order Price: $" + orderPrice);
     }
 
-    public double calculatePrice(String subscription) {
+    public double calculatePrice(Subscription subscription) {
         double totalPrice = 0.0;
 
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
       
-        if (subscription.equals("gold")) {
-            totalPrice *= GOLD_DISCOUNT; // 15% discount for prime members
-        } else if (subscription.equals("platinum")) {
-            totalPrice *= PLATINUM_DISCOUNT; // 10% discount for platinum members
-        } else if (subscription.equals("silver")) {
-            totalPrice *= SILVER_DISCOUNT; // 5% discount for silver members
-        } 
+        totalPrice *= subscription.getDiscount();
 
         return totalPrice;
     }

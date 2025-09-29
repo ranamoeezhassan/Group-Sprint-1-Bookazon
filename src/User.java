@@ -5,14 +5,14 @@ public class User {
     private static final String DEFAULT_ORDER_STATUS = "Order Placed";
     
     private String name;
-    private String subscription;
+    private Subscription subscription;
     private Cart cart;
     private ArrayList<Order> orders;
     private ShippingAddress shippingAddress;
     private BillingAddress billingAddress;
     
 
-    public User(String name, String subscription) {
+    public User(String name, Subscription subscription) {
         this.name = name;
         this.subscription = subscription;  // normal, gold, platinum, silver membership
         this.cart = new Cart();
@@ -25,11 +25,11 @@ public class User {
         return name;
     }
 
-    public String getSubscription() {
+    public Subscription getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(String subscription) {
+    public void setSubscription(Subscription subscription) {
         this.subscription = subscription;
     }
 
