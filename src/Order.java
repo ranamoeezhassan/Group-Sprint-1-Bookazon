@@ -79,13 +79,13 @@ public class Order {
         for (CartItem item : items) {
             totalPrice += item.getTotalPrice();
         }
-
-        if (subscription == "gold") {
-            totalPrice *= GOLD_DISCOUNT; // 15% discount for gold members (1 - 0.15 = 0.85)
-        } else if (subscription == "platinum") {
-            totalPrice *= PLATINUM_DISCOUNT; // 10% discount for platinum members (1 - 0.10 = 0.90)
-        } else if (subscription == "silver") {
-            totalPrice *= SILVER_DISCOUNT; // 5% discount for silver members (1 - 0.05 = 0.95)
+      
+        if (subscription.equals("gold")) {
+            totalPrice *= GOLD_DISCOUNT; // 15% discount for prime members
+        } else if (subscription.equals("platinum")) {
+            totalPrice *= PLATINUM_DISCOUNT; // 10% discount for platinum members
+        } else if (subscription.equals("silver")) {
+            totalPrice *= SILVER_DISCOUNT; // 5% discount for silver members
         } 
 
         return totalPrice;
