@@ -84,7 +84,7 @@ public class Bookazon {
         // add books to cart
         bookazon.getUser(0).addToCart(bookazon.getBook(0), 1);
         bookazon.getUser(0).addToCart(bookazon.getBook(1), 2);
-        
+
         // view cart
         bookazon.getUser(0).viewCart();
 
