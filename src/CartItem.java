@@ -21,8 +21,7 @@ public class CartItem {
 
     public void printDetails() {
         System.out.printf(
-            "Item: %s, Price: $%.2f, Quantity: %d, Total: $%.2f%n",
-            itemName, price, quantity, getTotalPrice()
+            "Item: %s, Price: $%.2f, Quantity: %d, Total: $%.2f%n", this.media.getTitle(), this.media.getPrice(), this.quantity, getTotalPrice()
         );
     }
 
