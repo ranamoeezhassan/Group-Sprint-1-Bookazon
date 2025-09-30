@@ -16,8 +16,8 @@ public class User {
         this.subscription = subscription;  // normal, gold, platinum, silver membership
         this.cart = new Cart();
         this.orders = new ArrayList<>();
-        this.shippingAddress = new ShippingAddress("", "", "", null, "", "");
-        this.billingAddress = new BillingAddress("", "", "", null, "", "");
+        this.shippingAddress = new ShippingAddress("", "", "", "", "", "");
+        this.billingAddress = new BillingAddress("", "", "", "", "", "");
     }
 
     public String getName() {
