@@ -84,11 +84,8 @@ public class Bookazon {
         // add books to cart
         bookazon.getUser(0).addToCart(bookazon.getBook(0), 1);
         bookazon.getUser(0).addToCart(bookazon.getBook(1), 2);
-        bookazon.getUser(0).addToCart(bookazon.getBook(0), 1);
-        bookazon.getUser(0).addToCart(bookazon.getBook(1), 2);
-
+        
         // view cart
-        bookazon.getUser(0).viewCart();
         bookazon.getUser(0).viewCart();
 
         // set shipping address and billing address
@@ -97,10 +94,8 @@ public class Bookazon {
 
         // checkout
         bookazon.getUser(0).checkout();
-        bookazon.getUser(0).checkout();
 
         // view order details
-        bookazon.getUser(0).viewOrders();
         bookazon.getUser(0).viewOrders();
         
     }
