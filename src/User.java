@@ -53,12 +53,12 @@ public class User {
     }
 
 
-    public void addToCart(Book book, int quantity) {
-        cart.addBook(book, quantity);
+    public void addToCart(Media media, int quantity) {
+        cart.addMedia(media, quantity);
     }
 
-    public void removeFromCart(Book book) {
-        cart.removeBook(book);
+    public void removeFromCart(Media media) {
+        cart.removeMedia(media);
     }
 
     public void viewOrders() {

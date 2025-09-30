@@ -21,7 +21,7 @@ public class Bookazon {
 
     public void viewBooks() {
         for (Book book : books) {
-            book.printBookDetails();
+            book.printDetails();
         }
     }
 
