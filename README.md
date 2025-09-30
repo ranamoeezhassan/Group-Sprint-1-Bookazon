@@ -9,6 +9,14 @@ An assignment for redesigning software and refactoring code smells.  Part of Sof
 
 ---
 
+## 📊 Sprint Burndown Chart
+
+![Burndown Chart](burndown/burndown_chart.png)
+
+*This chart is automatically updated when issues are opened or closed.*
+
+---
+
 ## Overview
 In this project, you will work in small teams to **extend** and **improve** an existing online book store. The project focuses on adding new functionality while ensuring the system adheres to **key software design principles**. Throughout the project, you will practice collaborative development via GitHub, utilizing best practices such as **issue tracking**, **code reviews**, and **feature branching**.
 
