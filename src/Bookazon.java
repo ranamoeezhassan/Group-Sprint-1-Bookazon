@@ -47,7 +47,7 @@ public class Bookazon {
         book.setPaperback(isPaperback);
     }
 
-    public void updateSubscription(User user, String subscription) {
+    public void updateSubscription(User user, Subscription subscription) {
         user.setSubscription(subscription);
     }
 
@@ -78,8 +78,8 @@ public class Bookazon {
         bookazon.addBook(new Book("1984", "George Orwell", 1949, 8.99, true));
 
         // create users
-        bookazon.addUser(new User("Alice", "normal"));
-        bookazon.addUser(new User("Bob", "gold"));
+        bookazon.addUser(new User("Alice", new Normal()));
+        bookazon.addUser(new User("Bob", new Gold()));
 
         // add books to cart
         bookazon.getUser(0).addToCart(bookazon.getBook(0), 1);
@@ -89,8 +89,8 @@ public class Bookazon {
         bookazon.getUser(0).viewCart();
 
         // set shipping address and billing address
-        bookazon.getUser(0).setShippingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA");
-        bookazon.getUser(0).setBillingAddress("456 Elm St", "", "Springfield", "IL", "62702", "USA");
+        bookazon.getUser(0).setShippingAddress(new ShippingAddress("123 Main St", "", "Springfield", "IL", "62701", "USA"));
+        bookazon.getUser(0).setBillingAddress(new BillingAddress("456 Elm St", "", "Springfield", "IL", "62702", "USA"));
 
         // checkout
         bookazon.getUser(0).checkout();
