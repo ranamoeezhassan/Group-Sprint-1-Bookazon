@@ -58,7 +58,7 @@
     "number": 18,
     "title": "Add printUserDetails() to User and update viewUsers",
     "createdAt": "2025-09-29T02:59:55Z",
-    "closedAt": null,
+    "closedAt": "2025-09-30T04:01:56Z",
     "labels": [
       {
         "name": "code smell"
