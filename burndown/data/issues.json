@@ -80,7 +80,7 @@
     "number": 16,
     "title": "Remove demo/testing code from User",
     "createdAt": "2025-09-29T02:57:28Z",
-    "closedAt": null,
+    "closedAt": "2025-09-30T04:04:39Z",
     "labels": [
       {
         "name": "code smell"
