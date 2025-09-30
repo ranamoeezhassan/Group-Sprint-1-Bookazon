@@ -19,6 +19,13 @@ public class CartItem {
         return media.getPrice();
     }
 
+    public void printDetails() {
+        System.out.printf(
+            "Item: %s, Price: $%.2f, Quantity: %d, Total: $%.2f%n",
+            itemName, price, quantity, getTotalPrice()
+        );
+    }
+
     public int getQuantity() {
         return quantity;
     }
