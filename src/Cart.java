@@ -11,17 +11,17 @@ public class Cart {
         items.add(item);
     }
 
+    public void addMedia(Media media, int quantity) {
+        CartItem item = new CartItem(media, quantity);
+        addItem(item);
+    }
+
     public void removeItem(CartItem item) {
         items.remove(item);
     }
 
-    public void removeBook(Book book) {
-        for (CartItem item : items) {
-            if (item.getName().equals(book.getTitle())) {
-                items.remove(item);
-                break;
-            }
-        }
+    public void removeMedia(Media media) {
+        items.removeIf(item -> item.getMedia().getTitle().equals(media.getTitle()));
     }
     
     public void updateQuantity(CartItem item, int quantity) {

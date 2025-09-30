@@ -1,4 +1,4 @@
-public class Book {
+public class Book implements Media {
     private String title;
     private String author;
     private int yearPublished;
@@ -53,7 +53,7 @@ public class Book {
         this.isPaperback = isPaperback;
     }
 
-    public void printBookDetails() {
+    public void printDetails() {
         System.out.println("Title: " + title);
         System.out.println("Author: " + author);
         System.out.println("Year Published: " + yearPublished);

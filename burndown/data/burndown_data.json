@@ -1,0 +1,35 @@
+{
+  "daily_data": [
+    {
+      "date": "2025-09-27",
+      "open": 0,
+      "closed": 0,
+      "created_today": 9,
+      "closed_today": 0
+    },
+    {
+      "date": "2025-09-28",
+      "open": 9,
+      "closed": 0,
+      "created_today": 0,
+      "closed_today": 0
+    },
+    {
+      "date": "2025-09-29",
+      "open": 9,
+      "closed": 0,
+      "created_today": 8,
+      "closed_today": 8
+    },
+    {
+      "date": "2025-09-30",
+      "open": 9,
+      "closed": 8,
+      "created_today": 0,
+      "closed_today": 9
+    }
+  ],
+  "sprint_start": "2025-09-27T00:00:00+00:00",
+  "sprint_end": "2025-09-30T23:59:59+00:00",
+  "total_issues": 17
+}
