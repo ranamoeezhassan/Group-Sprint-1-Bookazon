@@ -69,7 +69,7 @@
     "number": 17,
     "title": "Add printDetails() to CartItem",
     "createdAt": "2025-09-29T02:58:49Z",
-    "closedAt": null,
+    "closedAt": "2025-09-30T03:34:54Z",
     "labels": [
       {
         "name": "code smell"
