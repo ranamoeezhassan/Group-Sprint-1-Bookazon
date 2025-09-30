@@ -11,7 +11,7 @@ public class Order {
     private double orderPrice;
 
     public Order(Cart cart, Subscription subscription, Address shippingAddress, Address billingAddress) {
-        this.items = cart.getItems();
+    this.items = new ArrayList<>(cart.getItems()); // Create a copy
         this.orderPrice = calculatePrice(subscription);
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
